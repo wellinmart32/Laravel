@@ -1,0 +1,3 @@
+base de datos: id15448383_indrfloresdb
+usuario de base de datos: id15448383_rflores
+contraseña: IndustriasFlores2244__
