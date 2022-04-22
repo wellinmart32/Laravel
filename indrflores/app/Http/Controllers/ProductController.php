@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use App\Product;
 
 class ProductController extends Controller
@@ -43,14 +42,13 @@ class ProductController extends Controller
     {
         $product = new Product();
         $product->code = $request->code;
-        $product->name = $request->name;
         $product->description = $request->description;
-        $product->weight = $request->weight;
         $product->value = $request->value;
-        $product->state = $request->state;
+        $product->stock = $request->stock;
+        $product->state = 1;
         $product->save();
 
-        return back()->with('mensaje', 'Producto creado correctamente.');
+        return back()->with('message', 'Producto creado correctamente.');
     }
 
     /**
@@ -90,14 +88,12 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->code = $request->code;
-        $product->name = $request->name;
         $product->description = $request->description;
-        $product->weight = $request->weight;
         $product->value = $request->value;
-        $product->state = $request->state;
+        $product->stock = $request->stock;
         $product->save();
         
-        return back()->with('mensaje', 'Producto actualizado correctamente.');
+        return back()->with('message', 'Producto actualizado correctamente.');
     }
 
     /**
@@ -108,11 +104,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        // return redirect()->route('products.index');
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect()->route('products.index')->with('mensaje', 'Producto eliminado correctamente.');
+        return redirect()->route('products.index')->with('message', 'Producto eliminado correctamente.');
     }
 
     public function filter()
@@ -126,7 +121,7 @@ class ProductController extends Controller
         $sum = 0;
 
         foreach ($products as $item)
-            $sum = $sum + $item->value;
+            $sum = $sum + 1;
 
         return view('product.search', compact('products', 'sum'));
     }

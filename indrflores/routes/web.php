@@ -19,8 +19,16 @@ Auth::routes();
 
 Route::resource('/products', 'ProductController');
 
-Route::get('/productfilter', 'ProductController@filter')->name('filter');
+Route::get('/productfilter', 'ProductController@filter')->name('productfilter');
 
-Route::post('/productsearch', 'ProductController@search')->name('search');
+Route::post('/productsearch', 'ProductController@search')->name('productsearch');
+
+Route::resource('/sales', 'SaleController');
+
+Route::get('/salefilter', 'SaleController@filter')->name('salefilter');
+
+Route::post('/salesearch', 'SaleController@search')->name('salesearch');
+
+Route::get('/product/{id}', 'SaleController@getProductInfo');
 
 Route::get('/home', 'HomeController@index')->name('home');

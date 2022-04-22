@@ -12,67 +12,21 @@
         </div>
 
         <div class="panel-body">
-          @if ( session('mensaje') )
-            <div class="alert alert-success">{{ session('mensaje') }}</div>
+          @if ( session('message') )
+          <div class="alert alert-success">{{ session('message') }}</div>
           @endif
 
           <form method="POST" action="{{ action('ProductController@destroy', $product->id) }}">
             {{ csrf_field() }}
             {{ method_field('DELETE') }}
 
-            <input
-              type="text"
-              name="code"
-              placeholder="Código"
-              value="{{ $product->code }}"
-              class="form-control mb-2"
-              disabled="disabled"
-            />
+            <input id="code" type="text" name="code" placeholder="Código" value="{{ $product->code }}" class="form-control mb-2" disabled="disabled" />
 
-            <input
-              type="text"
-              name="name"
-              placeholder="Nombre"
-              value="{{ $product->name }}"
-              class="form-control mb-2"
-              disabled="disabled"
-            />
+            <input id="description" type="text" name="description" placeholder="Descripcion" value="{{ $product->description }}" class="form-control mb-2" disabled="disabled" />
 
-            <input
-              type="text"
-              name="description"
-              placeholder="Descripcion"
-              value="{{ $product->description }}"
-              class="form-control mb-2"
-              disabled="disabled"
-            />
+            <input id="value" type="number" name="value" placeholder="Valor" value="{{ $product->value }}" class="form-control mb-2" disabled="disabled" />
 
-            <input
-              type="text"
-              name="weight"
-              placeholder="Peso"
-              value="{{ $product->weight }}"
-              class="form-control mb-2"
-              disabled="disabled"
-            />
-
-            <input
-              type="text"
-              name="value"
-              placeholder="Valor"
-              value="{{ $product->value }}"
-              class="form-control mb-2"
-              disabled="disabled"
-            />
-
-            <input
-              type="text"
-              name="state"
-              placeholder="Estado"
-              value="{{ $product->state }}"
-              class="form-control mb-2"
-              disabled="disabled"
-            />
+            <input id="stock" type="number" name="stock" placeholder="En almacén" value="{{ $product->stock }}" class="form-control mb-2" disabled="disabled" />
 
             <button class="btn btn-danger btn-block" type="submit">Eliminar</button>
           </form>
